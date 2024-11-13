@@ -15,6 +15,9 @@ router.get('/', async (req, res) => {
 
 router.post('/upload-book', async(req, res) => {
     try{
+
+        // console.log(req.body);
+
         const { 
             title,
             author,
@@ -36,6 +39,39 @@ router.post('/upload-book', async(req, res) => {
     }catch(err) {
         res.status(500).json({ message: 'Failed to Add Book', err});
     }
+});
+
+//* route to get single book
+router.get('/:id', async (req, res) => {
+    try{
+        // console.log(req.params.id); //* The id is the dynamic value
+        // const id = req.params.id
+
+        //* with destructuring
+        const { id } = req.params;
+        const book = await Book.findById(id);
+
+        //* case if book not Found
+        if(!book) return res.status(404).json({message: 'Book Not Found'});
+        
+        res.status(200).json(book);
+
+    }catch(error) {
+        res.status(500).json({message: 'Failed To Fetch Book', error});
+    }
+});
+
+router.delete('/:id', async (req, res)=>{
+   try {
+      const deletedBook = await Book.findByIdAndDelete(req.params.id);
+
+      if(!deletedBook) return res.status(404).json({message : "Book not found!!"});
+
+      res.status(200).json({mesage : "Book is deleted"});
+      
+   } catch (error) {
+      res.status(500).json({message : "Failed To Delete", error});
+   }
 })
 
 export default router;
