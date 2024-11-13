@@ -1,0 +1,5 @@
+
+
+    dotenv : is a module that helps manage sensitive donfiguration data
+
+        - we create a file .env and we store in it our sensitive data

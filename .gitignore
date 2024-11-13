@@ -1,0 +1,9 @@
+
+
+book-store/node_modules
+
+server/node_modules
+
+ReactNotes
+
+*.env 
