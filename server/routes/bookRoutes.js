@@ -72,6 +72,22 @@ router.delete('/:id', async (req, res)=>{
    } catch (error) {
       res.status(500).json({message : "Failed To Delete", error});
    }
-})
+});
 
+//* Route to update book 
+router.put('/:id', async (req, res) => {
+    // console.log(req.params, req.body);
+    //* get the book by its id 
+    //* then change the values in the body 
+    //* then send the response to the client
+
+    try{
+        const book = await Book.findByIdAndUpdate(req.params.id, req.body);
+        if(!book) return res.status(404).json({message: 'Book Not Found'});
+
+        res.status(200).json({message: 'Book Updated Successfully', book});
+    }catch(error){
+        res.status(500).json({message: 'Failed To Fetch Book', error});
+    }
+})
 export default router;
