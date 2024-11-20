@@ -1,0 +1,7 @@
+book-store/node_modules
+server/node_modules
+
+*.env
+
+# Ignore Logs
+*.log
