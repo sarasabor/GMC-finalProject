@@ -1,6 +1,6 @@
 import React from 'react'
 import coverImage from '../images/coverPhoto.jpg';
-import BookCards from './BookCards';
+import BooksGenre from './BooksGenre';
 
 
 const Hero = () => {
@@ -26,7 +26,7 @@ const Hero = () => {
                 >Shop now</button>
             </div>
         </div> 
-        <BookCards title='Recent Books'/>
+        <BooksGenre title='Books Genre'/>
        
     </div>
   )

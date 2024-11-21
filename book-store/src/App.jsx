@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 
 //* Importing the routes
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import BooksByGenre from "./components/BooksByGenre";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Hero />}  />
             <Route path='/books' element={<AllBooks  />} />
+            <Route path='/books/genre/:genre' element={<BooksByGenre />} />
           </Routes>
       </BrowserRouter>
     </BooksContextProvider>

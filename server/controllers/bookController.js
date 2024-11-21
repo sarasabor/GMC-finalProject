@@ -73,3 +73,16 @@ export const updateBook = async(req, res) => {
         res.status(500).json({ message: 'Failed To Fetch Books', error});
     }
 }
+
+//* Controller To Get Book By its Genre
+export const getBookByGenre = async(req, res) => {
+    try {
+        const { genre } = req.params;
+        const booksByGenre = await Book.find({ genre });
+        if(!booksByGenre) return res.status(404).json({message: 'Genre Not Found'});
+
+        res.status(200).json(booksByGenre);
+    } catch (error) {
+        res.status(500).json({message: 'Failed To Fetch books', error});
+    }
+}
