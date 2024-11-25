@@ -3,6 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import bookRoutes from './routes/bookRoutes.js';
+import authRoutes from './routes/authRoutes.js';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(cors({
 
 //* MIDDLEWARE FOR ROUTING 
 app.use('/books', bookRoutes);
+app.use(authRoutes);
 
 const PORT = process.env.PORT || 5001;
 

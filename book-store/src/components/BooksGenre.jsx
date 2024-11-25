@@ -17,10 +17,10 @@ const BooksGenre = ({title}) => {
             to={item.href}
             key={index}
           >
-            <div className=' h-[400px] w-[300px] relative'>
+            <div className='h-[400px] w-[300px] relative hover:scale-[1.02] '>
               <img
                 src={item.img}
-                className='h-[500px] w-[400px] absolute inset-0 object-cover rounded-lg hover:scale-[1.02] transition duration-[.3s]'
+                className='h-[500px] w-[400px] absolute inset-0 object-cover rounded-lg  transition duration-[.3s]'
                 alt={item.alt}
               />
               <div 

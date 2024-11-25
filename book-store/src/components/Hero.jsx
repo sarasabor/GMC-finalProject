@@ -9,7 +9,7 @@ const Hero = () => {
     <div>
 
       {/* Main Image */}
-        <div className='relative '>
+        <div className='relative bg-gray-100 '>
             <img src={coverImage} alt="cover" 
               className='w-full h-[calc(100vh-4rem)] object-cover sm:h-[60vh] md:h-[70vh] lg:h-[80vh]' 
             />

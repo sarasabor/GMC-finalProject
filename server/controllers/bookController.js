@@ -22,7 +22,7 @@ export const addBook = async(req, res) => {
         await newBook.save();
 
         //* if Book Added Successfully 
-        res.status(200).json({message: 'Book Added Successfully', newBook});
+        res.status(201).json({message: 'Book Added Successfully', newBook});
 
     } catch (error) {
         res.status(500).json({ message: 'Failed To Fetch Books', error});
