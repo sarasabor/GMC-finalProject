@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 //* Importing the routes
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import BooksByGenre from "./components/BooksByGenre";
+import SignupForm from "./components/SignupForm";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<Hero />}  />
             <Route path='/books' element={<AllBooks  />} />
             <Route path='/books/genre/:genre' element={<BooksByGenre />} />
+            <Route path="/sign-up" element={<SignupForm />} />
           </Routes>
         <Footer /> 
       </BrowserRouter>

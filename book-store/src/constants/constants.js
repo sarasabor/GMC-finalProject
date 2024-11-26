@@ -1,10 +1,6 @@
 
 export const navLinks = [
     {
-        href : '/',
-        text : "Home"
-    },
-    {
         href : "/books",
         text : "Books"
     },
@@ -15,6 +11,14 @@ export const navLinks = [
     {
         href : "/contact",
         text : "Contact Us"
+    },
+    {
+        href : "/sign-up",
+        text : "Sign up"
+    },
+    {
+        href : "/login",
+        text : "Login"
     }
 ];
 

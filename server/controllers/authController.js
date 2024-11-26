@@ -10,9 +10,10 @@ const errorsFunction = (err) => {
         return errors;
     }
 
-    Object.values(err.errors) && Object.values(err.errors).forEach((element) => {
-        console.log(element.properties);
-        errors[element.properties.path] = element.properties.message;
+    Object.values(err.errors) && Object.values(err.errors).forEach(({properties}) => {
+        errors[properties.path] = properties.message;
+        //* Operation one : errors['email'] = error message
+        //* Operation Two : errors['password'] = error message 
     });
 
     return errors;
