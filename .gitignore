@@ -8,4 +8,4 @@ server/node_modules
 
 cookies
 
-req.rest
+./req.rest
