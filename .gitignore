@@ -7,3 +7,5 @@ server/node_modules
 *.log
 
 cookies
+
+req.rest
