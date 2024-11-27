@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import bookRoutes from './routes/bookRoutes.js';
 import authRoutes from './routes/authRoutes.js';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(cors({
     origin: 'http://localhost:3000'
 }));
+app.use(cookieParser());
 
 //* MIDDLEWARE FOR ROUTING 
 app.use('/books', bookRoutes);

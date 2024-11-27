@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 //* Importing the routes
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import BooksByGenre from "./components/BooksByGenre";
 import SignupForm from "./components/SignupForm";
 
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <BooksContextProvider>
-      <BrowserRouter>
+      <Router>
         <Navbar />
           <Routes>
             <Route path="/" element={<Hero />}  />
@@ -22,7 +22,7 @@ function App() {
             <Route path="/sign-up" element={<SignupForm />} />
           </Routes>
         <Footer /> 
-      </BrowserRouter>
+      </Router>
     </BooksContextProvider>
   );
 }
