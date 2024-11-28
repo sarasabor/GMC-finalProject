@@ -19,7 +19,8 @@ const SignupForm = () => {
                 password
             }, {
                 //* This Field is for : format => JSON, TEXT...
-                headers: { 'Content-Type' : 'application/json'}
+                headers: { 'Content-Type' : 'application/json'},
+                withCredentials: true
             });
             const data = response.data;
             navigate(data.redirect);

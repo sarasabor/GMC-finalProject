@@ -1,9 +1,20 @@
 import User from "../models/User.js";
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
 //* Function To Handle Errors
 const errorsFunction = (err) => {
     let errors = { email: '', password: ''}
+
+    //* Incorrect Email
+    if(err.message === 'Incorrect Email') {
+        errors.email = 'This Email is Already Registered';
+    }
+
+    //* Incorrect Password
+    if(err.message === 'Incorrect Password') {
+        errors.password = 'This password is incorrect';
+    }
 
     //* if Data is Duplicated
     if(err.code === 11000) {
@@ -23,10 +34,6 @@ const errorsFunction = (err) => {
 
 }
 
-//* singn-up GET
-export const signUpGet = (req, res) => {
-    res.send('html form');
-}
 
 export const signUpPost = async(req, res) => {
     const { email, password } = req.body;
@@ -42,7 +49,8 @@ export const signUpPost = async(req, res) => {
         const token = jwt.sign({userId: newUser._id}, process.env.SECRET_KEY, { expiresIn: '1h'});
         
         //* register it in cookies
-        res.cookie('jwt', token)
+       //* install cookie-parser and declare it as middleware ex: in this case it's declared in server.js 
+        res.cookie('jwt', token);
         
         res.status(201).json({ message: 'User Registered Successfully', redirect: '/login', token});
     } catch (error) {
@@ -51,10 +59,29 @@ export const signUpPost = async(req, res) => {
     }
 }
 
-export const loginGet = (req, res) => {
-    
-}
+export const loginPost = async (req, res) => {
+    const { email, password } = req.body;
 
-export const loginPost = () => {
+    try{
+        const user = await User.findOne({email});
+        if(!user) {
+            throw new Error("Incorrect Email");
+        }
+
+        const auth = await bcrypt.compare(password, user.password);
+        if(!auth) {
+            throw new Error("Incorrect Password");
+        }
+
+        const token = jwt.sign({user: user._id}, process.env.SECRET_KEY, { expiresIn: '1h'});
+
+        //* As Cookie As WEll
+        res.cookie('jwt', token);
+
+        res.status(200).json({user: user._id, redirect: '/'});
+    }catch(error) {
+        const errors = errorsFunction(error);
+        res.status(500).send(errors);
+    }
 
 }
