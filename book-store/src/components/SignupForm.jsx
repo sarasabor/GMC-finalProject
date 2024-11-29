@@ -23,6 +23,7 @@ const SignupForm = () => {
                 withCredentials: true
             });
             const data = response.data;
+            console.log(data);
             navigate(data.redirect);
         } catch (error) {
             setErrors(error.response.data);

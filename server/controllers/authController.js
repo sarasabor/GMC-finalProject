@@ -71,12 +71,12 @@ export const loginPost = async (req, res) => {
         const auth = await bcrypt.compare(password, user.password);
         if(!auth) {
             throw new Error("Incorrect Password");
-        }
+        } 
 
         const token = jwt.sign({user: user._id}, process.env.SECRET_KEY, { expiresIn: '1h'});
 
-        //* As Cookie As WEll
-        res.cookie('jwt', token);
+        //* register Cookie As WEll
+        res.cookie('jwt', token, { sameSite: 'Strict', maxAge: 1000 * 60 * 60 });
 
         res.status(200).json({user: user._id, redirect: '/'});
     }catch(error) {

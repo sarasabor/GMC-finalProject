@@ -9,23 +9,25 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import BooksByGenre from "./components/BooksByGenre";
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
+import NotFound from "./components/NotFound";
 
 function App() {
 
   return (
-    <BooksContextProvider>
       <Router>
-        <Navbar />
-          <Routes>
-            <Route path="/" element={<Hero />}  />
-            <Route path='/books' element={<AllBooks  />} />
-            <Route path='/books/genre/:genre' element={<BooksByGenre />} />
-            <Route path="/sign-up" element={<SignupForm />} />
-            <Route path="/login" element={<LoginForm/>} />
-          </Routes>
-        <Footer /> 
+        <BooksContextProvider>
+          <Navbar />
+            <Routes>
+              <Route path="/" element={<Hero />}  />
+              <Route path='/books' element={<AllBooks  />} />
+              <Route path='/books/genre/:genre' element={<BooksByGenre />} />
+              <Route path="/sign-up" element={<SignupForm />} />
+              <Route path="/login" element={<LoginForm/>} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          <Footer /> 
+        </BooksContextProvider>
       </Router>
-    </BooksContextProvider>
   );
 }
 

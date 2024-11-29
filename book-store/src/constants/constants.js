@@ -33,3 +33,9 @@ export const booksGenreCollection = [
         img: 'https://imgs.search.brave.com/Vy3kgELPdBTl6EWIyef5CPDjQeBgn7VLRqAeLgb5efE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tYXJr/ZXRwbGFjZS5jYW52/YS5jb20vRUFEYW91/amxjX1kvMS8wLzEw/MDN3L2NhbnZhLWNy/aW1lLWhpc3Rvcnkt/bm9uLWZpY3Rpb24t/ZWJvb2stY292ZXIt/LUU1QTVtSXlUWWsu/anBn'
     }
 ];
+
+export const customerServices = [
+    { href: '/contact', text: 'Support'},
+    { href: '/shipping', text: 'Shipping Info'},
+    { href: '/privacy-policy', text: 'Privacy Policy'}
+];
